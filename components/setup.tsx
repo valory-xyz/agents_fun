@@ -235,7 +235,7 @@ export function SetupComponent() {
                         <li>X (Twitter) username, email and password</li>
                         <li>Google Gemini API Key (referred to as Gen AI key in the script)</li>
                       </ul>
-                      <p className="text-amber-600 font-semibold">NOTE: Make sure all information is exactly correct, or you will have to start the process over again. Do not include an "@" in your X username.</p>
+                      <p className="text-amber-600 font-semibold">NOTE: Make sure all information is exactly correct, or you will have to start the process over again. Do not include an &quot;@&quot; in your X username.</p>
                     </div>
                   </details>
                 </li>
