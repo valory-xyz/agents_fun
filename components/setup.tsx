@@ -63,8 +63,8 @@ export function SetupComponent() {
                     <div className="pl-4 mt-2">
                       <p>Two guides we recommend on learning these basics:</p>
                       <ul className="list-disc pl-6">
-                        <li><a href="https://gist.github.com/bradtraversy/cc180de0edee05075a6139e42d5f28ce" className="text-blue-600 hover:underline">Git Commands Guide</a></li>
-                        <li><a href="https://education.github.com/git-cheat-sheet-education.pdf" className="text-blue-600 hover:underline">Git Cheat Sheet</a></li>
+                        <li><a href="https://gist.github.com/bradtraversy/cc180de0edee05075a6139e42d5f28ce" target="_blank" className="text-blue-600 hover:underline">Git Commands Guide</a></li>
+                        <li><a href="https://education.github.com/git-cheat-sheet-education.pdf" target="_blank" className="text-blue-600 hover:underline">Git Cheat Sheet</a></li>
                       </ul>
                     </div>
                   </details>
@@ -75,6 +75,7 @@ export function SetupComponent() {
                     <div className="pl-4 mt-2">
                       <p>This guide is helpful in setting this up:</p>
                       <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent" 
+                         target="_blank"
                          className="text-blue-600 hover:underline block mt-2">
                         GitHub SSH Key Setup Guide
                       </a>
@@ -95,12 +96,14 @@ export function SetupComponent() {
                       <ul className="space-y-2 mt-2">
                         <li>
                           <a href="https://help.coinbase.com/en/wallet/getting-started/what-is-coinbase-wallet" 
+                             target="_blank"
                              className="text-blue-600 hover:underline block">
                             Coinbase Wallet Guide
                           </a>
                         </li>
                         <li>
                           <a href="https://help.coinbase.com/en/contact-us/support-faq/coinbase-wallet/how-to-recover-access-to-coinbase-wallet" 
+                             target="_blank"
                              className="text-blue-600 hover:underline block">
                             Wallet Recovery Guide
                           </a>
