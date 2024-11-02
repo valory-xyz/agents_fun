@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,10 +26,37 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-900 text-white`}
       >
-        {children}
+        
+          <main className="pt-20">
+            <div className="max-w-4xl mx-auto px-4">
+          <div className="">
+          <h1 className="text-center text-5xl font-bold mb-8 font-['Space_Mono']">Agents.Fun</h1>
+          <p className="text-center text-xl mb-8 font-['Space_Mono']">The easiest way to setup an OLAS agent.</p>
+        </div>
+
+        <div className="flex justify-center gap-8 mb-8">
+        <a href="/" className="text-xl font-semibold text-blue-600 hover:text-blue-800">
+            Setup
+          </a>
+          <a href="/leaderboard" className="text-xl font-semibold text-blue-600 hover:text-blue-800">
+            Leaderboard
+          </a>
+        </div>
+
+        <p className="text-center text-gray-500 text-xs mb-8">
+          DISCLAIMER: 
+          MEME-OORRR IS AN EXPERIMENTAL PRODUCT CREATED BY VALORY AG. 
+          AGENTS.FUN IS A COMMUNITY CREATED SITE BUILT FOR INFORMATIONAL PURPOSES ONLY. 
+          DO YOUR OWN RESEARCH AND USE AT YOUR OWN RISK.
+        </p>
+        </div>
+{children}</main>
       </body>
     </html>
   );
