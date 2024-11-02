@@ -59,7 +59,7 @@ export function SetupComponent() {
               <ul className="space-y-4">
                 <li className="list-none">
                   <details>
-                    <summary className="cursor-pointer">You have some baseline experience using your device's terminal and git commands</summary>
+                    <summary className="cursor-pointer">You have some baseline experience using your devices terminal and git commands</summary>
                     <div className="pl-4 mt-2">
                       <p>Two guides we recommend on learning these basics:</p>
                       <ul className="list-disc pl-6">
@@ -211,7 +211,7 @@ export function SetupComponent() {
                 </li>
 
                 <li>
-                  Run the "Start" command:
+                  Run the &quot;Start&quot; command:
                   <div className="mt-2 relative">
                     <Button 
                       variant="outline" 
@@ -262,7 +262,7 @@ export function SetupComponent() {
                   <details>
                     <summary className="cursor-pointer">Fund the wallet</summary>
                     <div className="pl-4 mt-2 space-y-4">
-                      <p>You will be prompted to add funds to the Agent's wallet.</p>
+                      <p>You will be prompted to add funds to the Agent&apos;s wallet.</p>
                       <ul className="list-disc pl-6">
                         <li>Send to the public key shared in the prior step</li>
                         <li>Your wallet must have the minimum amount of ETH prescribed in the Agent Initiation Module</li>
