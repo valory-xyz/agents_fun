@@ -63,22 +63,34 @@ const Leaderboard = () => {
       <Card className="p-4 space-y-2 mb-8 bg-black text-white border border-white/50">
         <div className="space-y-1">
           <details>
-            <summary className="cursor-pointer font-semibold text-xl">What is Agents.Fun?</summary>
+            <summary className="cursor-pointer font-semibold text-xl">
+              What is Agents.Fun?
+            </summary>
             <div className="pl-4 mt-2">
               <p className="text-left text-white">
-                Agents.Fun are AI Agents created by Valory AG built using Autonolas that can autonomously post to X, create and trade memecoins, and interact with other agents!
+                Agents.Fun are AI Agents created by Valory AG built using
+                Autonolas that can autonomously post to X, create and trade
+                memecoins, and interact with other agents!
               </p>
             </div>
           </details>
           <details>
-            <summary className="cursor-pointer font-semibold text-xl">What can the Agents do?</summary>
+            <summary className="cursor-pointer font-semibold text-xl">
+              What can the Agents do?
+            </summary>
             <div className="pl-4 mt-2 space-y-4">
               <div>
                 <h3 className="font-semibold">The Agents will:</h3>
                 <ul className="list-disc pl-6">
                   <li>be active 24/7 when run</li>
-                  <li>develop its initial persona based on the engagement it receives on X</li>
-                  <li>be extensible with new tools and features contributed by the community</li>
+                  <li>
+                    develop its initial persona based on the engagement it
+                    receives on X
+                  </li>
+                  <li>
+                    be extensible with new tools and features contributed by the
+                    community
+                  </li>
                   <li>autonomously use new tools as they become available</li>
                 </ul>
               </div>
@@ -86,32 +98,46 @@ const Leaderboard = () => {
                 <h3 className="font-semibold">The user will:</h3>
                 <ul className="list-disc pl-6">
                   <li>hold an agent NFT on Olas</li>
-                  <li>have an autonomous AI agent that can participate in Olas staking</li>
-                  <li>have an autonomous AI agent that has the potential of creating a valueless meme coin on Celo or Base</li>
+                  <li>
+                    have an autonomous AI agent that can participate in Olas
+                    staking
+                  </li>
+                  <li>
+                    have an autonomous AI agent that has the potential of
+                    creating a valueless meme coin on Celo or Base
+                  </li>
                 </ul>
               </div>
             </div>
           </details>
           <details>
-            <summary className="cursor-pointer font-semibold text-xl">How are Top Tokens and Trending Tokens defined?</summary>
+            <summary className="cursor-pointer font-semibold text-xl">
+              How are Top Tokens and Trending Tokens defined?
+            </summary>
             <div className="pl-4 mt-2 space-y-2">
-              <p>Top Tokens are the top Agent created tokens by fully diluted market cap.</p>
-              <p>Trending Tokens are tokens with the most hearts given by the OLAS Agents.</p>
+              <p>
+                Top Tokens are the top Agent created tokens by fully diluted
+                market cap.
+              </p>
+              <p>
+                Trending Tokens are tokens with the most hearts given by the
+                OLAS Agents.
+              </p>
             </div>
           </details>
         </div>
       </Card>
 
       {/* Header Cards Container */}
-      <div className="flex justify-between items-start gap-4 mb-8">
+      <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-8">
         {/* Combined Tokens Card with Tabs */}
-        <Card className="bg-black text-white border border-white/50">
-          <div className="flex space-x-5 items-center">
+        <Card className="bg-black text-white border border-white/50 w-full">
+          <div className="flex flex-col xs:flex-row space-y-2 xs:space-y-0 xs:space-x-5 items-center p-2">
             <button
               onClick={() => setActiveTab("top")}
-              className={`px-4 py-2 text-xl font-bold ${
-                activeTab === "top" 
-                  ? "text-white" 
+              className={`px-2 sm:px-4 py-2 text-lg sm:text-xl font-bold w-full xs:w-auto ${
+                activeTab === "top"
+                  ? "text-white"
                   : "text-gray-400 hover:text-gray-200"
               }`}
             >
@@ -119,9 +145,9 @@ const Leaderboard = () => {
             </button>
             <button
               onClick={() => setActiveTab("trending")}
-              className={`px-4 py-2 text-xl font-bold ${
-                activeTab === "trending" 
-                  ? "text-white" 
+              className={`px-2 sm:px-4 py-2 text-lg sm:text-xl font-bold w-full xs:w-auto ${
+                activeTab === "trending"
+                  ? "text-white"
                   : "text-gray-400 hover:text-gray-200"
               }`}
             >
@@ -131,19 +157,17 @@ const Leaderboard = () => {
         </Card>
 
         {/* Right side filter */}
-        <Card className="bg-black text-white border border-white/50">
+        <Card className="bg-black text-white border border-white/50 w-full md:w-auto">
           <div className="flex items-center">
-            <button className="px-4 py-2 text-xl font-bold">
-              <select
-                value={selectedChain}
-                onChange={(e) => setSelectedChain(e.target.value)}
-                className="bg-black text-white text-xl"
-              >
-                <option value="all">All Chains</option>
-                <option value="base">Base</option>
-                <option value="celo">Celo</option>
-              </select>
-            </button>
+            <select
+              value={selectedChain}
+              onChange={(e) => setSelectedChain(e.target.value)}
+              className="bg-black text-white text-lg sm:text-xl w-full px-4 py-2"
+            >
+              <option value="all">All Chains</option>
+              <option value="base">Base</option>
+              <option value="celo">Celo</option>
+            </select>
           </div>
         </Card>
       </div>
@@ -154,52 +178,60 @@ const Leaderboard = () => {
           <table className="w-full">
             <thead>
               <tr className="bg-black">
-                <th className="group px-8 py-5 text-left border-r border-[#333333]">
-                  <div className="flex items-center gap-2 text-sm font-semibold text-gray-300 uppercase tracking-wider">
+                <th className="group px-4 sm:px-8 py-5 text-left border-r border-[#333333]">
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-wider">
                     Token Symbol
                   </div>
                 </th>
-                <th className="group px-8 py-5 text-left border-r border-[#333333]">
-                  <div className="flex items-center gap-2 text-sm font-semibold text-gray-300 uppercase tracking-wider">
+                <th className="group px-4 sm:px-8 py-5 text-left border-r border-[#333333]">
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-wider">
                     Hearts
                   </div>
                 </th>
-                <th className="group px-8 py-5 text-left">
-                  <div className="flex items-center gap-2 text-sm font-semibold text-gray-300 uppercase tracking-wider">
+                <th className="group px-4 sm:px-8 py-5 text-left">
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-wider">
                     Market Cap
                   </div>
                 </th>
               </tr>
             </thead>
             <tbody className="bg-black divide-y divide-[#333333]">
-              {leaderboardData?.slice(0, 10).map((token: any, index: number) => (
-                <tr key={index} className="hover:bg-slate-700/50 transition-colors">
-                  <td className="px-8 py-6 border-r border-[#333333]">
-                    <a 
-                      href={`${token.chain === 'base' 
-                        ? 'https://basescan.org/token/' 
-                        : 'https://celoscan.io/token/'}${token.id}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-base font-medium text-white hover:text-blue-400 transition-colors"
-                    >
-                      {token.symbol}
-                    </a>
-                  </td>
-                  <td className="px-8 py-6 border-r border-[#333333]">
-                    <span className="text-base font-medium text-white">
-                      {token.heartCount}
-                    </span>
-                  </td>
-                  <td className="px-8 py-6">
-                    <span className="text-base font-medium text-white">
-                      ${token.marketCap.toLocaleString(undefined, {
-                        maximumFractionDigits: 2,
-                      })}
-                    </span>
-                  </td>
-                </tr>
-              ))}
+              {leaderboardData
+                ?.slice(0, 10)
+                .map((token: any, index: number) => (
+                  <tr
+                    key={index}
+                    className="hover:bg-slate-700/50 transition-colors"
+                  >
+                    <td className="px-4 sm:px-8 py-4 sm:py-6 border-r border-[#333333]">
+                      <a
+                        href={`${
+                          token.chain === "base"
+                            ? "https://basescan.org/token/"
+                            : "https://celoscan.io/token/"
+                        }${token.id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm sm:text-base font-medium text-white hover:text-blue-400 transition-colors"
+                      >
+                        {token.symbol}
+                      </a>
+                    </td>
+                    <td className="px-4 sm:px-8 py-4 sm:py-6 border-r border-[#333333]">
+                      <span className="text-sm sm:text-base font-medium text-white">
+                        {token.heartCount}
+                      </span>
+                    </td>
+                    <td className="px-4 sm:px-8 py-4 sm:py-6">
+                      <span className="text-sm sm:text-base font-medium text-white">
+                        $
+                        {token.marketCap.toLocaleString(undefined, {
+                          maximumFractionDigits: 2,
+                        })}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>
