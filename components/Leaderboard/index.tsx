@@ -96,7 +96,7 @@ const Leaderboard = () => {
             <summary className="cursor-pointer font-semibold text-xl">How are Top Tokens and Trending Tokens defined?</summary>
             <div className="pl-4 mt-2 space-y-2">
               <p>Top Tokens are the top Agent created tokens by fully diluted market cap.</p>
-              <p>Trending Tokens are tokens with the most "hearts&quot; given by the OLAS Agents.</p>
+              <p>Trending Tokens are tokens with the most hearts given by the OLAS Agents.</p>
             </div>
           </details>
         </div>
@@ -105,7 +105,7 @@ const Leaderboard = () => {
       {/* Header Cards Container */}
       <div className="flex justify-between items-start gap-4 mb-8">
         {/* Combined Tokens Card with Tabs */}
-        <Card className="bg-black text-white border border-white/20">
+        <Card className="bg-black text-white border border-white/50">
           <div className="flex space-x-5 items-center">
             <button
               onClick={() => setActiveTab("top")}
@@ -131,7 +131,7 @@ const Leaderboard = () => {
         </Card>
 
         {/* Right side filter */}
-        <Card className="bg-black text-white border border-white/20">
+        <Card className="bg-black text-white border border-white/50">
           <div className="flex items-center">
             <button className="px-4 py-2 text-xl font-bold">
               <select
@@ -149,7 +149,7 @@ const Leaderboard = () => {
       </div>
 
       {/* Single Leaderboard Table */}
-      <Card className="overflow-hidden border border-[#333333]">
+      <Card className="overflow-hidden border border-white/50">
         <div className="w-full overflow-x-auto">
           <table className="w-full">
             <thead>
