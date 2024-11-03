@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
@@ -56,15 +57,6 @@ const Leaderboard = () => {
     );
   }
 
-  const handleSort = (column: string) => {
-    if (sortBy === column) {
-      setSortOrder(sortOrder === "ASC" ? "DESC" : "ASC");
-    } else {
-      setSortBy(column);
-      setSortOrder("DESC");
-    }
-  };
-
   return (
     <div className="max-w-4xl mx-auto px-4 pb-16">
       {/* Info Card */}
@@ -104,7 +96,7 @@ const Leaderboard = () => {
             <summary className="cursor-pointer font-semibold text-xl">How are Top Tokens and Trending Tokens defined?</summary>
             <div className="pl-4 mt-2 space-y-2">
               <p>Top Tokens are the top Agent created tokens by fully diluted market cap.</p>
-              <p>Trending Tokens are tokens with the most "hearts" given by the OLAS Agents.</p>
+              <p>Trending Tokens are tokens with the most "hearts&quot; given by the OLAS Agents.</p>
             </div>
           </details>
         </div>
