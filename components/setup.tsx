@@ -23,7 +23,7 @@ export function SetupComponent() {
         <div className="space-y-2">
           <h2 className="text-left text-xl font-bold">What is Meme-oorrr?</h2>
           <p className="text-left text-white">
-            Meme-oorrr is an AI Agent built by Autonolas that autonomously posts to X, can create and trade memecoins, and interact with other agents!
+            Meme-oorrr is an AI Agent created by Valory AG on Autonolas that autonomously posts to X, can create and trade memecoins, and interact with other agents!
           </p>
           <details className="mt-4">
             <summary className="cursor-pointer font-semibold">What can Meme-oorrr do?</summary>

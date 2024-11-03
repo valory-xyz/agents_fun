@@ -37,28 +37,35 @@ export default function RootLayout({
         </div>
         <main className="pt-20 relative z-10">
           <div className="max-w-4xl mx-auto px-4">
-          <div className="">
-          <h1 className="text-center text-5xl font-bold mb-8 font-['Space_Mono']">Agents.Fun</h1>
-          <p className="text-center text-xl mb-8 font-['Space_Mono']">Launch your OLAS Agent!!</p>
-        </div>
+            <div className="">
+              <h1 className="text-center transition-opacity ease-in duration-700 opacity-100 hover:opacity-0 text-5xl font-bold mb-8 font-['Space_Mono'] transition-opacity duration-700 hover:opacity-80">
+              ⚡ Agents.Fun 🤖
+              </h1>
+              <p className="text-center text-xl mb-8 font-['Space_Mono'] transition-opacity duration-700 hover:opacity-80">
+                On Chain Agents for everyone!!
+              </p>
+            </div>
 
-        <div className="flex justify-center gap-8 mb-8">
-        <a href="/" className="text-xl font-semibold text-blue-600 hover:text-blue-800">
-            Setup
-          </a>
-          <a href="/leaderboard" className="text-xl font-semibold text-blue-600 hover:text-blue-800">
-            Leaderboard
-          </a>
-        </div>
+            <div className="flex justify-center mb-8">
+              <a 
+                href="https://github.com/dvilelaf/meme-ooorr-quickstart/blob/main/README.md"
+                className="px-6 py-3 text-xl font-semibold bg-white text-black rounded-lg hover:bg-blue-700 transition-all duration-200"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Create your Agent!
+              </a>
+            </div>
 
-        <p className="text-center text-gray-500 text-xs mb-8">
-          DISCLAIMER: 
-          MEME-OORRR IS AN EXPERIMENTAL PRODUCT CREATED BY VALORY AG. 
-          AGENTS.FUN IS A COMMUNITY CREATED SITE BUILT FOR INFORMATIONAL PURPOSES ONLY. 
-          DO YOUR OWN RESEARCH AND USE AT YOUR OWN RISK.
-        </p>
-        </div>
-{children}</main>
+            <p className="text-center text-gray-500 text-xs mb-8 transition-opacity duration-700 hover:opacity-80">
+              DISCLAIMER: 
+              AGENTS.FUN IS AN EXPERIMENTAL PRODUCT CREATED BY VALORY AG ON AUTONOLAS. 
+              THIS IS A COMMUNITY CREATED SITE BUILT FOR INFORMATIONAL PURPOSES ONLY. 
+              DO YOUR OWN RESEARCH AND USE AT YOUR OWN RISK.
+            </p>
+          </div>
+          {children}
+        </main>
       </body>
     </html>
   );

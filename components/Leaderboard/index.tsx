@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { Card } from "@/components/ui/card"
 
 const tokens = [
   {
@@ -62,12 +63,51 @@ const tokens = [
 
 const Leaderboard = () => {
   return (
-    <div className="bg-slate-800 rounded-xl p-8 text-white">
-      <div className="flex items-center text-center justify-between w-full mb-8">
-        <h2 className="text-3xl text-center font-bold text-white w-full">Top Meme-Oorrr created tokens</h2>
+    <div className="max-w-4xl mx-auto px-4">
+      <Card className="p-6 space-y-6 mt-6 bg-black text-white">
+        <div className="space-y-2">
+          <h2 className="text-left text-xl font-bold">What is Agents.Fun?</h2>
+          <p className="text-left text-white">
+            Agents.Fun is an AI Agent created by Valory AG on Autonolas that can autonomously post to X, create and trade memecoins, and interact with other agents!
+          </p>
+          
+          <details className="mt-4">
+            <summary className="cursor-pointer font-semibold">What can Agents.Fun do?</summary>
+            <div className="pl-4 mt-2 space-y-4">
+              <div>
+                <h3 className="font-semibold">The Agent will:</h3>
+                <ul className="list-disc pl-6">
+                  <li>be active 24/7 when run</li>
+                  <li>develop its initial persona based on the engagement it receives on X</li>
+                  <li>be extensible with new tools and features contributed by the community</li>
+                  <li>autonomously use new tools as they become available</li>
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-semibold">The user will:</h3>
+                <ul className="list-disc pl-6">
+                  <li>hold an agent NFT on Olas</li>
+                  <li>have an autonomous AI agent that can participate in Olas staking</li>
+                  <li>have an autonomous AI agent that has the potential of creating a valueless meme coin on Celo or Base</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+        </div>
+      </Card>
+
+      <div className="mt-6">
+        <div className="inline-flex">
+          <button className="px-6 py-3 text-lg font-bold text-white bg-black border-2 border-white rounded-lg hover:bg-gray-900 transition-colors">
+            Top Tokens ⚡
+          </button>
+          <button className="px-6 py-3 text-lg font-bold text-white bg-black border-2 border-white rounded-lg hover:bg-gray-900 transition-colors ml-2">
+            Trending Tokens ❤️
+          </button>
+        </div>
       </div>
-      
-    
+
+      <Card className="p-6 space-y-6 mt-6 bg-black text-white">
         <table className="min-w-full divide-y divide-slate-600">
           <thead>
             <tr className="bg-slate-700">
@@ -142,6 +182,7 @@ const Leaderboard = () => {
             ))}
           </tbody>
         </table>
+      </Card>
     </div>
   );
 };
