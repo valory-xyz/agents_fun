@@ -47,21 +47,21 @@ export async function GET(request: Request) {
       },
     });
     // use mockEntry for testing, delete later
-    const mockEntry = {
-      id: "0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed",
-      chain: "base",
-      owner: "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
-      lpPairAddress: "0xc9034c3E7F58003E6ae0C8438e7c8f4598d5ACAA",
-      liquidity: "1000000000000000000", // 1 ETH worth of liquidity
-      heartCount: 10,
-      isUnleashed: true,
-      timestamp: Math.floor(Date.now() / 1000), // current Unix timestamp
-      blockNumber: 100000,
-    };
+    // const mockEntry = {
+    //   id: "0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed",
+    //   chain: "base",
+    //   owner: "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
+    //   lpPairAddress: "0xc9034c3E7F58003E6ae0C8438e7c8f4598d5ACAA",
+    //   liquidity: "1000000000000000000", // 1 ETH worth of liquidity
+    //   heartCount: 10,
+    //   isUnleashed: true,
+    //   timestamp: Math.floor(Date.now() / 1000), // current Unix timestamp
+    //   blockNumber: 100000,
+    // };
 
-    // const leaderboardData = response?.data?.data?.memeTokens?.items;
+    const leaderboardData = response?.data?.data?.memeTokens?.items;
     //use mockEntry for testing, delete later
-    const leaderboardData = [mockEntry];
+    // const leaderboardData = [mockEntry];
 
     if (!Array.isArray(leaderboardData) || leaderboardData.length === 0) {
       return NextResponse.json([]);
@@ -85,12 +85,6 @@ export async function GET(request: Request) {
     return NextResponse.json(enrichedData);
   } catch (error) {
     console.log("Error in API route:", error);
-    return NextResponse.json(
-      {
-        error:
-          error instanceof Error ? error.message : "Failed to process request",
-      },
-      { status: 500 }
-    );
+    return NextResponse.json([]);
   }
 }
