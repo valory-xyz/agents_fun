@@ -76,3 +76,23 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(10px);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 0.3;
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+  will-change: transform;
+}

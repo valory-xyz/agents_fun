@@ -29,14 +29,17 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-900 text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
       >
-        
-          <main className="pt-20">
-            <div className="max-w-4xl mx-auto px-4">
+        <div className="fixed inset-0 z-0 grid grid-cols-8 gap-8 p-8 opacity-30 select-none pointer-events-none">
+          {/* Create and render the grid */}
+          <EmojiGrid />
+        </div>
+        <main className="pt-20 relative z-10">
+          <div className="max-w-4xl mx-auto px-4">
           <div className="">
           <h1 className="text-center text-5xl font-bold mb-8 font-['Space_Mono']">Agents.Fun</h1>
-          <p className="text-center text-xl mb-8 font-['Space_Mono']">The easiest way to setup an OLAS agent.</p>
+          <p className="text-center text-xl mb-8 font-['Space_Mono']">Launch your OLAS Agent!!</p>
         </div>
 
         <div className="flex justify-center gap-8 mb-8">
@@ -59,4 +62,45 @@ export default function RootLayout({
       </body>
     </html>
   );
+}
+
+function EmojiGrid() {
+  // Create the grid
+  const grid: (string | null)[][] = Array(25).fill(null).map(() => Array(8).fill(null));
+  
+  // Fill the grid
+  for (let i = 0; i < 200; i++) {
+    const row = Math.floor(i / 8);
+    const col = i % 8;
+    
+    if ((row + col) % 2 === 0) {
+      const usedEmojis = new Set<string>();
+      for (let r = Math.max(0, row - 1); r <= Math.min(24, row + 1); r++) {
+        for (let c = Math.max(0, col - 1); c <= Math.min(7, col + 1); c++) {
+          if (grid[r]?.[c]) usedEmojis.add(grid[r][c]!);
+        }
+      }
+      
+      const availableEmojis = ['🤖', '⚡', '⭐', '🚀'].filter(emoji => !usedEmojis.has(emoji));
+      const selectedEmoji = availableEmojis[Math.floor(Math.random() * availableEmojis.length)];
+      grid[row][col] = selectedEmoji;
+    }
+  }
+  
+  return Array(200).fill(null).map((_, i) => {
+    const row = Math.floor(i / 8);
+    const col = i % 8;
+    return (row + col) % 2 === 0 ? (
+      <div 
+        key={i} 
+        className="text-4xl text-center animate-float"
+        style={{
+          animation: `float 3s ease-in-out infinite`,
+          animationDelay: `${(row * 0.1 + col * 0.2)}s`
+        }}
+      >
+        {grid[row][col]}
+      </div>
+    ) : <div key={i} />;
+  });
 }
