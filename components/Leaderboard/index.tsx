@@ -129,26 +129,26 @@ const Leaderboard = () => {
       </Card>
 
       {/* Header Cards Container */}
-      <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-8">
+      <div className="flex flex-col md:flex-row md:items-center  justify-between items-stretch gap-4 mb-8">
         {/* Combined Tokens Card with Tabs */}
         <Card className="bg-black text-white border border-white/50 w-full">
-          <div className="flex flex-col xs:flex-row space-y-2 xs:space-y-0 xs:space-x-5 items-center p-2">
+          <div className="flex flex-col sm:flex-row justify-center gap-6 p-6">
             <button
               onClick={() => setActiveTab("top")}
-              className={`px-2 sm:px-4 py-2 text-lg sm:text-xl font-bold w-full xs:w-auto ${
+              className={`px-4 py-2 text-2xl font-bold transition-colors ${
                 activeTab === "top"
                   ? "text-white"
-                  : "text-gray-400 hover:text-gray-200"
+                  : "text-gray-500 hover:text-gray-300"
               }`}
             >
               Top Tokens ⭐
             </button>
             <button
               onClick={() => setActiveTab("trending")}
-              className={`px-2 sm:px-4 py-2 text-lg sm:text-xl font-bold w-full xs:w-auto ${
+              className={`px-4 py-2 text-2xl font-bold transition-colors ${
                 activeTab === "trending"
                   ? "text-white"
-                  : "text-gray-400 hover:text-gray-200"
+                  : "text-gray-500 hover:text-gray-300"
               }`}
             >
               Trending Tokens❤️
@@ -157,19 +157,19 @@ const Leaderboard = () => {
         </Card>
 
         {/* Right side filter */}
-        <Card className="bg-black text-white border border-white/50 w-full md:w-auto">
-          <div className="flex items-center">
+        <div className="w-full md:w-[200px] md:max-h-[50px]  bg-black/20 backdrop-blur-sm rounded-lg border border-white/20">
+          <div className="flex items-center h-full relative after:content-[''] after:absolute after:right-4 after:top-1/2 after:-translate-y-1/2 after:border-l-4 after:border-l-transparent after:border-r-4 after:border-r-transparent after:border-t-4 after:border-t-white/50">
             <select
               value={selectedChain}
               onChange={(e) => setSelectedChain(e.target.value)}
-              className="bg-black text-white text-lg sm:text-xl w-full px-4 py-2"
+              className="bg-transparent text-white text-lg w-full px-4 py-2 appearance-none cursor-pointer focus:outline-none"
             >
               <option value="all">All Chains</option>
               <option value="base">Base</option>
               <option value="celo">Celo</option>
             </select>
           </div>
-        </Card>
+        </div>
       </div>
 
       {/* Single Leaderboard Table */}
