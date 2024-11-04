@@ -4,14 +4,17 @@ import { NextResponse } from "next/server";
 import axios from "axios";
 import { getTokenData } from "@/lib/helpers";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const sortBy = searchParams.get("sortBy");
+    const sortBy = searchParams.get("sortBy") ?? "recentHeartCount";
     const sortOrder = searchParams.get("order")?.toUpperCase() || "DESC";
     const chain = searchParams.get("chain")?.toLowerCase() ?? null;
+
+    const currentTimestamp = Math.floor(Date.now() / 1000);
+    const oneDayAgo = currentTimestamp - 24 * 60 * 60;
 
     const graphqlQuery = {
       query: `
@@ -21,8 +24,8 @@ export async function GET(request: Request) {
               isUnleashed: true
               ${chain ? `, chain: "${chain}"` : ""}
             }
-            ${sortBy ? `orderBy: ${sortBy}` : ""}
-            ${sortBy ? `orderDirection: ${sortOrder}` : ""}
+            orderBy: heartCount
+            orderDirection: ${sortOrder}
           ) {
             items {
               id
@@ -31,6 +34,11 @@ export async function GET(request: Request) {
               lpPairAddress
               liquidity
               heartCount
+              recentHeartCount: heartEvents(
+                where: { timestamp_gt: ${oneDayAgo} }
+              ) {
+                id
+              }
               isUnleashed
               timestamp
               blockNumber
@@ -49,21 +57,25 @@ export async function GET(request: Request) {
       },
     });
     // use mockEntry for testing, delete later
+
     // const mockEntry = {
     //   id: "0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed",
     //   chain: "base",
-    //   owner: "0x70997970C51812dc3A010C7d01b50e0d17dc79C8",
-    //   lpPairAddress: "0xc9034c3E7F58003E6ae0C8438e7c8f4598d5ACAA",
-    //   liquidity: "1000000000000000000", // 1 ETH worth of liquidity
+    //   recentHeartCount: 10,
     //   heartCount: 10,
+    //   marketCap: 1000000,
     //   isUnleashed: true,
-    //   timestamp: Math.floor(Date.now() / 1000), // current Unix timestamp
-    //   blockNumber: 100000,
+    //   timestamp: 1725379200,
+    //   blockNumber: 17423944,
+    // };
+    // const mockEntry2 = {
+    //   ...mockEntry,
+    //   recentHeartCount: 20,
     // };
 
     const leaderboardData = response?.data?.data?.memeTokens?.items;
     //use mockEntry for testing, delete later
-    // const leaderboardData = [mockEntry];
+    // const leaderboardData = [mockEntry, mockEntry2];
 
     if (!Array.isArray(leaderboardData) || leaderboardData.length === 0) {
       return NextResponse.json([]);
@@ -80,9 +92,19 @@ export async function GET(request: Request) {
         return {
           ...token,
           ...tokenData,
+          recentHeartCount: token.recentHeartCount,
         };
       })
     );
+
+    // Always sort by recentHeartCount unless explicitly specified otherwise
+    if (sortBy === "recentHeartCount" || !sortBy) {
+      enrichedData.sort((a, b) => {
+        return sortOrder === "DESC"
+          ? b.recentHeartCount - a.recentHeartCount
+          : a.recentHeartCount - b.recentHeartCount;
+      });
+    }
 
     return NextResponse.json(enrichedData);
   } catch (error) {
