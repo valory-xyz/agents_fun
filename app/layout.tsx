@@ -56,7 +56,7 @@ export default function RootLayout({
                 onClick={() => setShowHowItWorks(true)}
                 className="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
               >
-                How it Works
+                How it works
               </button>
             </div>
 
