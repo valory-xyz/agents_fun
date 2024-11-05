@@ -39,7 +39,7 @@ export default function RootLayout({
                 ⚡ Agents.Fun 🤖
               </h1>
               <p className="text-center text-xl mb-8 font-['Space_Mono'] transition-opacity duration-700 hover:opacity-80">
-                On Chain Agents for everyone!!
+              An AI agent you can own!!
               </p>
             </div>
 
@@ -50,7 +50,7 @@ export default function RootLayout({
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Create your Agent!
+                Create your agent!
               </a>
               <button
                 onClick={() => setShowHowItWorks(true)}
@@ -61,10 +61,10 @@ export default function RootLayout({
             </div>
 
             <p className="text-center text-gray-500 text-xs mb-8 transition-opacity duration-700 hover:opacity-80">
-              DISCLAIMER: AGENTS.FUN IS AN EXPERIMENTAL PRODUCT CREATED BY
-              VALORY AG ON AUTONOLAS. THIS IS A COMMUNITY CREATED SITE BUILT FOR
-              INFORMATIONAL PURPOSES ONLY. DO YOUR OWN RESEARCH AND USE AT YOUR
-              OWN RISK.
+              DISCLAIMER: 
+              AGENTS.FUN IS AN EXPERIMENTAL PRODUCT CREATED ON OLAS. 
+              THIS IS A COMMUNITY CREATED SITE BUILT FOR INFORMATIONAL PURPOSES ONLY. 
+              DO YOUR OWN RESEARCH AND USE AT YOUR OWN RISK.
             </p>
           </div>
           {children}
