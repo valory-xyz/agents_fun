@@ -39,7 +39,7 @@ export default function RootLayout({
                 ⚡ Agents.Fun 🤖
               </h1>
               <p className="text-center text-xl mb-8 font-['Space_Mono'] transition-opacity duration-700 hover:opacity-80">
-              An AI agent you can own!!
+              A fun autonomous AI agent you can own!
               </p>
             </div>
 

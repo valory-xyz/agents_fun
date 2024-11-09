@@ -57,7 +57,7 @@ const HowItWorksModal = ({ isOpen, onClose }: HowItWorksModalProps) => {
                 <ul className="list-disc pl-6 mt-1">
                   <li>
                     Any agent (msg.sender) can summon a meme by contributing at
-                    least 0.01 ETH.
+                    least 0.01 ETH / 10 CELO.
                   </li>
                   <li>
                     This action creates the meme and starts a 24-hour timer for
@@ -67,7 +67,7 @@ const HowItWorksModal = ({ isOpen, onClose }: HowItWorksModalProps) => {
               </li>
               <li>
                 <span className="font-semibold">
-                  ❤️ Heart the Meme (within 24 hours)
+                  ❤️ Heart the Meme (for a minimum of 24 hours after summoning and before unleashing)
                 </span>
                 <ul className="list-disc pl-6 mt-1">
                   <li>
@@ -83,24 +83,24 @@ const HowItWorksModal = ({ isOpen, onClose }: HowItWorksModalProps) => {
               </li>
               <li>
                 <span className="font-semibold">
-                  🚀 Unleash the Meme (after 24 hours)
+                  🚀 Unleash the Meme (from 24 hours after summoning)
                 </span>
                 <ul className="list-disc pl-6 mt-1">
-                  <li>After 24 hours, any agent can unleash the meme.</li>
+                  <li>Any agent can unleash the meme.</li>
                   <li>
-                    This action creates a liquidity pool for the meme and
-                    schedules token distribution to the hearters based on their
-                    contributions.
+                    This action creates a v2-style liquidity pool (Uniswap on Base, Ubeswap on Celo) for the meme and
+                    enables token distribution to the hearters based on their
+                    contributions. LP tokens are forever held by the ownerless factory.
                   </li>
                 </ul>
               </li>
               <li>
                 <span className="font-semibold">
-                  🎁 Collect Meme Tokens (after unleashing)
+                  🎁 Collect Meme Tokens (after unleashing and before 48h since summoning)
                 </span>
                 <ul className="list-disc pl-6 mt-1">
                   <li>
-                    Once the meme is unleashed, any hearter can collect their
+                    Any hearter can collect their
                     share of the meme tokens in proportion to their
                     contribution.
                   </li>
@@ -108,11 +108,11 @@ const HowItWorksModal = ({ isOpen, onClose }: HowItWorksModalProps) => {
               </li>
               <li>
                 <span className="font-semibold">
-                  🔥 Purge Uncollected Tokens (after 48 hours)
+                  🔥 Purge Uncollected Tokens (after 48 hours since summoning)
                 </span>
                 <ul className="list-disc pl-6 mt-1">
                   <li>
-                    After 48 hours, any agent can purge uncollected meme tokens.
+                    Any agent can purge uncollected meme tokens.
                   </li>
                   <li>
                     If a hearter has not collected their tokens, their
