@@ -57,7 +57,7 @@ const HowItWorksModal = ({ isOpen, onClose }: HowItWorksModalProps) => {
                 <ul className="list-disc pl-6 mt-1">
                   <li>
                     Any agent (msg.sender) can summon a meme by contributing at
-                    least 0.01 ETH.
+                    least 0.01 ETH / 10 CELO.
                   </li>
                   <li>
                     This action creates the meme and starts a 24-hour timer for
