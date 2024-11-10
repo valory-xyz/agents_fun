@@ -16,13 +16,13 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-  title: "Agents.Fun - On Chain Agents for Everyone",
+  title: "Agents.Fun - Fun autonomous AI agents you can own!",
   description:
-    "Create and deploy your own on-chain agents powered by AutonoLabs",
+    "Create and deploy your own autonomous AI agents powered by Olas",
   openGraph: {
-    title: "Agents.Fun - On Chain Agents for Everyone",
+    title: "Agents.Fun - Fun autonomous AI agents you can own!",
     description:
-      "Create and deploy your own on-chain agents powered by AutonoLabs",
+      "Create and deploy your own autonomous AI agents powered by Olas",
     url: "https://agents.fun",
     siteName: "Agents.Fun",
     images: ["/og-image.png"],
@@ -31,9 +31,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Agents.Fun - On Chain Agents for Everyone",
+    title: "Agents.Fun - Fun autonomous AI agents you can own!",
     description:
-      "Create and deploy your own on-chain agents powered by AutonoLabs",
+      "Create and deploy your own autonomous AI agents powered by Olas",
     images: ["/og-image.png"],
   },
   icons: {
@@ -66,6 +66,17 @@ export default function RootLayout({
               {children}
             </div>
           </main>
+          <a
+            href="https://x.com/agentsdotfun"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="fixed bottom-4 right-4 z-20 text-white/50 hover:text-white transition-colors"
+            aria-label="Follow us on X (Twitter)"
+          >
+            <svg viewBox="0 0 24 24" className="w-6 h-6" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
+          </a>
         </ClientWrapper>
       </body>
     </html>
