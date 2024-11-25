@@ -9,7 +9,6 @@ export const dynamic = "force-dynamic";
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const sortBy = searchParams.get("sortBy") ?? "recentHeartCount";
     const sortOrder = searchParams.get("order")?.toLowerCase() || "desc";
     const chain = searchParams.get("chain")?.toLowerCase() ?? null;
     const view = searchParams.get("view") ?? "trending";
@@ -77,7 +76,6 @@ export async function GET(request: Request) {
       return NextResponse.json([]);
     }
 
-    // Process each token and convert recentHeartCount from array to number
     const enrichedData = await Promise.all(
       leaderboardData.map(async (token: any) => {
         const tokenData = await getTokenData(
@@ -94,7 +92,6 @@ export async function GET(request: Request) {
       })
     );
 
-    // Modify the sorting logic
     if (view === "top") {
       enrichedData.sort((a, b) => {
         return sortOrder === "desc"
