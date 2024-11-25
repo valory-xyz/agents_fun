@@ -13,7 +13,7 @@ const Leaderboard = () => {
   const [sortBy, setSortBy] = useState<string>("recentHeartCount");
   const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
   const [activeTab, setActiveTab] = useState<"top" | "trending" | "summoned">(
-    "trending"
+    "summoned"
   );
 
   useEffect(() => {
@@ -201,14 +201,14 @@ const Leaderboard = () => {
         <Card className="bg-black text-white border border-white/50 w-full">
           <div className="flex flex-col sm:flex-row justify-center gap-6 p-6">
             <button
-              onClick={() => setActiveTab("top")}
+              onClick={() => setActiveTab("summoned")}
               className={`px-4 py-2 text-2xl font-bold transition-colors ${
-                activeTab === "top"
+                activeTab === "summoned"
                   ? "text-white"
                   : "text-gray-500 hover:text-gray-300"
               }`}
             >
-              Top Tokens ⭐
+              Summoned Tokens 🪄
             </button>
             <button
               onClick={() => setActiveTab("trending")}
@@ -221,14 +221,14 @@ const Leaderboard = () => {
               Unleashed Tokens 🚀
             </button>
             <button
-              onClick={() => setActiveTab("summoned")}
+              onClick={() => setActiveTab("top")}
               className={`px-4 py-2 text-2xl font-bold transition-colors ${
-                activeTab === "summoned"
+                activeTab === "top"
                   ? "text-white"
                   : "text-gray-500 hover:text-gray-300"
               }`}
             >
-              Summoned Tokens 🪄
+              Top Tokens ⭐
             </button>
           </div>
         </Card>
