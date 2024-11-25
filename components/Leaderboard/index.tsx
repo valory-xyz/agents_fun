@@ -11,8 +11,10 @@ const Leaderboard = () => {
   const [error, setError] = useState(null);
   const [selectedChain, setSelectedChain] = useState<string>("all");
   const [sortBy, setSortBy] = useState<string>("recentHeartCount");
-  const [sortOrder, setSortOrder] = useState<"ASC" | "DESC">("DESC");
-  const [activeTab, setActiveTab] = useState<"top" | "trending">("trending");
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
+  const [activeTab, setActiveTab] = useState<"top" | "trending" | "summoned">(
+    "summoned"
+  );
 
   useEffect(() => {
     const fetchLeaderboardData = async () => {
@@ -68,8 +70,18 @@ const Leaderboard = () => {
             </summary>
             <div className="pl-4 mt-2">
               <p className="text-left text-white">
-              Agents.Fun are autonomous AI Agents built using <a href="https://olas.network" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">Olas</a> that can autonomously post to X, create and trade memecoins, and interact with other agents! Beware, they tend to loose money! No financial advice!
-
+                Agents.Fun are autonomous AI Agents built using{" "}
+                <a
+                  href="https://olas.network"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 hover:text-blue-300"
+                >
+                  Olas
+                </a>{" "}
+                that can autonomously post to X, create and trade memecoins, and
+                interact with other agents! Beware, they tend to loose money! No
+                financial advice!
               </p>
             </div>
           </details>
@@ -96,10 +108,27 @@ const Leaderboard = () => {
               <div>
                 <h3 className="font-semibold">The user will:</h3>
                 <ul className="list-disc pl-6">
-                  <li>hold an agent NFT on <a href="https://registry.olas.network" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">Olas registry</a></li>
                   <li>
-                    have an autonomous AI agent that can participate in <a href="https://registry.olas.network" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">Olas
-                    staking</a>
+                    hold an agent NFT on{" "}
+                    <a
+                      href="https://registry.olas.network"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-400 hover:text-blue-300"
+                    >
+                      Olas registry
+                    </a>
+                  </li>
+                  <li>
+                    have an autonomous AI agent that can participate in{" "}
+                    <a
+                      href="https://registry.olas.network"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-400 hover:text-blue-300"
+                    >
+                      Olas staking
+                    </a>
                   </li>
                   <li>
                     have an autonomous AI agent that has the potential of
@@ -109,17 +138,41 @@ const Leaderboard = () => {
               </div>
               <div>
                 <p className="text-white">
-                  Agents.Fun is built on <a href="https://olas.network" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-300">Olas</a>.
+                  Agents.Fun is built on{" "}
+                  <a
+                    href="https://olas.network"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-400 hover:text-blue-300"
+                  >
+                    Olas
+                  </a>
+                  .
                 </p>
                 <p className="text-white">
-                  Agents.Fun uses unaudited MemeFactory. Engage with the product at your own risk! To see the smart contracts go here:
+                  Agents.Fun uses unaudited MemeFactory. Engage with the product
+                  at your own risk! To see the smart contracts go here:
                 </p>
                 <ul className="list-disc pl-6 text-blue-400">
                   <li>
-                    <a href="https://basescan.org/address/0x42156841253f428cb644ea1230d4fddfb70f8891#code" target="_blank" rel="noopener noreferrer" className="hover:text-blue-300">Base Contract</a>
+                    <a
+                      href="https://basescan.org/address/0x42156841253f428cb644ea1230d4fddfb70f8891#code"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-blue-300"
+                    >
+                      Base Contract
+                    </a>
                   </li>
                   <li>
-                    <a href="https://celoscan.io/address/0x42156841253f428cb644ea1230d4fddfb70f8891#code" target="_blank" rel="noopener noreferrer" className="hover:text-blue-300">Celo Contract</a>
+                    <a
+                      href="https://celoscan.io/address/0x42156841253f428cb644ea1230d4fddfb70f8891#code"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-blue-300"
+                    >
+                      Celo Contract
+                    </a>
                   </li>
                 </ul>
               </div>
@@ -131,7 +184,8 @@ const Leaderboard = () => {
             </summary>
             <div className="pl-4 mt-2 space-y-2">
               <p>
-                Top Tokens are the top agent created tokens by market cap (=FDV).
+                Top Tokens are the top agent created tokens by market cap
+                (=FDV).
               </p>
               <p>
                 Trending Tokens are tokens with the most hearts given by the
@@ -142,20 +196,19 @@ const Leaderboard = () => {
         </div>
       </Card>
 
-      {/* Header Cards Container */}
-      <div className="flex flex-col md:flex-row md:items-center  justify-between items-stretch gap-4 mb-8">
-        {/* Combined Tokens Card with Tabs */}
+      {/* Updated Header Cards Container */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between items-stretch gap-4 mb-8">
         <Card className="bg-black text-white border border-white/50 w-full">
           <div className="flex flex-col sm:flex-row justify-center gap-6 p-6">
             <button
-              onClick={() => setActiveTab("top")}
+              onClick={() => setActiveTab("summoned")}
               className={`px-4 py-2 text-2xl font-bold transition-colors ${
-                activeTab === "top"
+                activeTab === "summoned"
                   ? "text-white"
                   : "text-gray-500 hover:text-gray-300"
               }`}
             >
-              Top Tokens ⭐
+              Summoned Tokens 🪄
             </button>
             <button
               onClick={() => setActiveTab("trending")}
@@ -165,7 +218,17 @@ const Leaderboard = () => {
                   : "text-gray-500 hover:text-gray-300"
               }`}
             >
-              Trending Tokens❤️
+              Unleashed Tokens 🚀
+            </button>
+            <button
+              onClick={() => setActiveTab("top")}
+              className={`px-4 py-2 text-2xl font-bold transition-colors ${
+                activeTab === "top"
+                  ? "text-white"
+                  : "text-gray-500 hover:text-gray-300"
+              }`}
+            >
+              Top Tokens ⭐
             </button>
           </div>
         </Card>
@@ -248,10 +311,11 @@ const Leaderboard = () => {
                     </td>
                     <td className="px-4 sm:px-8 py-4 sm:py-6">
                       <span className="text-sm sm:text-base font-medium text-white">
-                        $
-                        {token.marketCap.toLocaleString(undefined, {
-                          maximumFractionDigits: 2,
-                        })}
+                        {token.lpPairAddress
+                          ? `$${token.marketCap.toLocaleString(undefined, {
+                              maximumFractionDigits: 2,
+                            })}`
+                          : "-"}
                       </span>
                     </td>
                   </tr>

@@ -9,23 +9,30 @@ export const dynamic = "force-dynamic";
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const sortBy = searchParams.get("sortBy") ?? "recentHeartCount";
-    const sortOrder = searchParams.get("order")?.toUpperCase() || "DESC";
+    const sortOrder = searchParams.get("order")?.toLowerCase() || "desc";
     const chain = searchParams.get("chain")?.toLowerCase() ?? null;
+    const view = searchParams.get("view") ?? "trending";
 
     const currentTimestamp = Math.floor(Date.now() / 1000);
     const oneDayAgo = currentTimestamp - 24 * 60 * 60;
+
+    const unleashCondition =
+      view === "top"
+        ? ""
+        : view === "summoned"
+        ? "isUnleashed: false"
+        : "isUnleashed: true";
 
     const graphqlQuery = {
       query: `
         query UnleashedMemes {
           memeTokens(
             where: { 
-              isUnleashed: true
-              ${chain ? `, chain: "${chain}"` : ""}
+              ${unleashCondition}
+              ${chain ? `chain: "${chain}"` : ""}
             }
-            orderBy: heartCount
-            orderDirection: ${sortOrder}
+            orderBy: "heartCount"
+            orderDirection: "${sortOrder}"
           ) {
             items {
               id
@@ -33,15 +40,21 @@ export async function GET(request: Request) {
               owner
               lpPairAddress
               liquidity
-              heartCount
-              recentHeartCount: heartEvents(
-                where: { timestamp_gt: ${oneDayAgo} }
-              ) {
-                id
-              }
               isUnleashed
               timestamp
               blockNumber
+              hearts {
+                items {
+                  id
+                  timestamp
+                }
+              }
+              recentHearts: hearts(where: { timestamp_gt: ${oneDayAgo} }) {
+                items {
+                  id
+                  timestamp
+                }
+              }
             }
           }
         }
@@ -56,32 +69,13 @@ export async function GET(request: Request) {
         "Content-Type": "application/json",
       },
     });
-    // use mockEntry for testing, delete later
-
-    // const mockEntry = {
-    //   id: "0x4ed4E862860beD51a9570b96d89aF5E1B0Efefed",
-    //   chain: "base",
-    //   recentHeartCount: 10,
-    //   heartCount: 10,
-    //   marketCap: 1000000,
-    //   isUnleashed: true,
-    //   timestamp: 1725379200,
-    //   blockNumber: 17423944,
-    // };
-    // const mockEntry2 = {
-    //   ...mockEntry,
-    //   recentHeartCount: 20,
-    // };
 
     const leaderboardData = response?.data?.data?.memeTokens?.items;
-    //use mockEntry for testing, delete later
-    // const leaderboardData = [mockEntry, mockEntry2];
 
     if (!Array.isArray(leaderboardData) || leaderboardData.length === 0) {
       return NextResponse.json([]);
     }
 
-    // Process each token
     const enrichedData = await Promise.all(
       leaderboardData.map(async (token: any) => {
         const tokenData = await getTokenData(
@@ -92,15 +86,21 @@ export async function GET(request: Request) {
         return {
           ...token,
           ...tokenData,
-          recentHeartCount: token.recentHeartCount,
+          heartCount: token.hearts?.items?.length ?? 0,
+          recentHeartCount: token.recentHearts?.items?.length ?? 0,
         };
       })
     );
 
-    // Always sort by recentHeartCount unless explicitly specified otherwise
-    if (sortBy === "recentHeartCount" || !sortBy) {
+    if (view === "top") {
       enrichedData.sort((a, b) => {
-        return sortOrder === "DESC"
+        return sortOrder === "desc"
+          ? b.heartCount - a.heartCount
+          : a.heartCount - b.heartCount;
+      });
+    } else if (view === "summoned") {
+      enrichedData.sort((a, b) => {
+        return sortOrder === "desc"
           ? b.recentHeartCount - a.recentHeartCount
           : a.recentHeartCount - b.recentHeartCount;
       });

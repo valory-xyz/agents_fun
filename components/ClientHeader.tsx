@@ -35,8 +35,9 @@ export default function ClientHeader() {
       </div>
 
       <p className="text-center text-gray-500 text-xs mb-8 transition-opacity duration-700 hover:opacity-80">
-        DISCLAIMER: AGENTS.FUN IS AN EXPERIMENTAL PRODUCT CREATED ON OLAS. THIS IS A COMMUNITY CREATED SITE BUILT FOR INFORMATIONAL
-        PURPOSES ONLY. DO YOUR OWN RESEARCH AND USE AT YOUR OWN RISK.
+        DISCLAIMER: AGENTS.FUN IS AN EXPERIMENTAL PRODUCT CREATED ON OLAS. THIS
+        IS A COMMUNITY CREATED SITE BUILT FOR INFORMATIONAL PURPOSES ONLY. DO
+        YOUR OWN RESEARCH AND USE AT YOUR OWN RISK.
       </p>
       <HowItWorksModal
         isOpen={showHowItWorks}
