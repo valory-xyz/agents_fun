@@ -262,6 +262,11 @@ const Leaderboard = () => {
                 </th>
                 <th className="group px-4 sm:px-8 py-5 text-left border-r border-[#333333]">
                   <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-wider">
+                    Token Address
+                  </div>
+                </th>
+                <th className="group px-4 sm:px-8 py-5 text-left border-r border-[#333333]">
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-wider">
                     Hearts in the past 24h
                   </div>
                 </th>
@@ -300,6 +305,20 @@ const Leaderboard = () => {
                       </a>
                     </td>
                     <td className="px-4 sm:px-8 py-4 sm:py-6 border-r border-[#333333]">
+                      <a
+                        href={`${
+                          token.chain === "base"
+                            ? "https://basescan.org/address/"
+                            : "https://celoscan.io/address/"
+                        }${token.id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm sm:text-base font-medium  hover:text-blue-500 text-blue-400 transition-colors"
+                      >
+                        {`${token.id.slice(0, 6)}...${token.id.slice(-4)}`}
+                      </a>
+                    </td>
+                    <td className="px-4 sm:px-8 py-4 sm:py-6 border-r border-[#333333]">
                       <span className="text-sm sm:text-base font-medium text-white">
                         {token.recentHeartCount}
                       </span>
@@ -311,11 +330,25 @@ const Leaderboard = () => {
                     </td>
                     <td className="px-4 sm:px-8 py-4 sm:py-6">
                       <span className="text-sm sm:text-base font-medium text-white">
-                        {token.lpPairAddress
-                          ? `$${token.marketCap.toLocaleString(undefined, {
+                        {token.lpPairAddress ? (
+                          <a
+                            href={`${
+                              token.chain === "base"
+                                ? "https://app.uniswap.org/explore/tokens/base/"
+                                : "https://app.ubeswap.org/#/swap?inputCurrency=CELO&outputCurrency="
+                            }${token.id}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-blue-500 text-blue-400 transition-colors"
+                          >
+                            $
+                            {token.marketCap.toLocaleString(undefined, {
                               maximumFractionDigits: 2,
-                            })}`
-                          : "-"}
+                            })}
+                          </a>
+                        ) : (
+                          "-"
+                        )}
                       </span>
                     </td>
                   </tr>
