@@ -47,6 +47,7 @@ export async function GET(request: Request) {
                 items {
                   id
                   timestamp
+                  amount
                 }
               }
               recentHearts: hearts(where: { timestamp_gt: ${oneDayAgo} }) {
@@ -87,7 +88,9 @@ export async function GET(request: Request) {
           ...token,
           ...tokenData,
           heartCount: token.hearts?.items?.length ?? 0,
-          recentHeartCount: token.recentHearts?.items?.length ?? 0,
+          heartAmount: token.hearts?.items?.reduce((sum: number, heart: any) => {
+            return sum + (Number(heart.amount) / 10**18);
+          }, 0) ?? 0,
         };
       })
     );
@@ -101,8 +104,8 @@ export async function GET(request: Request) {
     } else if (view === "summoned") {
       enrichedData.sort((a, b) => {
         return sortOrder === "desc"
-          ? b.recentHeartCount - a.recentHeartCount
-          : a.recentHeartCount - b.recentHeartCount;
+          ? b.heartAmount - a.heartAmount
+          : a.heartAmount - b.heartAmount;
       });
     }
 

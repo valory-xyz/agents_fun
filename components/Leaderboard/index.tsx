@@ -249,60 +249,42 @@ const Leaderboard = () => {
         </div>
       </div>
 
-      {/* Modified Leaderboard Table */}
-      <Card className="overflow-hidden border border-white/50">
-        <div className="w-full overflow-x-auto">
-          <table className="w-full">
-            <thead>
-              <tr className="bg-black">
-                <th className="group px-4 sm:px-8 py-5 text-left border-r border-[#333333]">
-                  <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-wider">
-                    Token Symbol
-                  </div>
-                </th>
-                <th className="group px-4 sm:px-8 py-5 text-left border-r border-[#333333]">
-                  <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-wider">
-                    Hearts in the past 24h
-                  </div>
-                </th>
-                <th className="group px-4 sm:px-8 py-5 text-left border-r border-[#333333]">
-                  <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-wider">
-                    Total Hearts
-                  </div>
-                </th>
-                <th className="group px-4 sm:px-8 py-5 text-left">
-                  <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-wider">
-                    Market Cap
-                  </div>
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-black divide-y divide-[#333333]">
-              {leaderboardData
-                ?.slice(0, 10)
-                .map((token: any, index: number) => (
-                  <tr
-                    key={index}
-                    className="hover:bg-slate-700/50 transition-colors"
-                  >
+      {/* Summoned Tokens Table */}
+      {activeTab === "summoned" && (
+        <Card className="overflow-hidden border border-white/50">
+          <div className="w-full overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="bg-black">
+                  <th className="group px-4 sm:px-8 py-5 text-left border-r border-[#333333]">
+                    <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-wider">
+                      Token Name/Symbol
+                    </div>
+                  </th>
+                  <th className="group px-4 sm:px-8 py-5 text-left border-r border-[#333333]">
+                    <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-wider">
+                      Total Hearts
+                    </div>
+                  </th>
+                  <th className="group px-4 sm:px-8 py-5 text-left">
+                    <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-wider">
+                      Total ETH Hearted
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-black divide-y divide-[#333333]">
+                {leaderboardData?.slice(0, 10).map((token: any, index: number) => (
+                  <tr key={index} className="hover:bg-slate-700/50 transition-colors">
                     <td className="px-4 sm:px-8 py-4 sm:py-6 border-r border-[#333333]">
                       <a
-                        href={`${
-                          token.chain === "base"
-                            ? "https://basescan.org/token/"
-                            : "https://celoscan.io/token/"
-                        }${token.id}`}
+                        href={`${token.chain === "base" ? "https://basescan.org/token/" : "https://celoscan.io/token/"}${token.id}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-sm sm:text-base font-medium text-white hover:text-blue-400 transition-colors"
                       >
-                        {token.symbol}
+                        {token.name} ({token.symbol})
                       </a>
-                    </td>
-                    <td className="px-4 sm:px-8 py-4 sm:py-6 border-r border-[#333333]">
-                      <span className="text-sm sm:text-base font-medium text-white">
-                        {token.recentHeartCount}
-                      </span>
                     </td>
                     <td className="px-4 sm:px-8 py-4 sm:py-6 border-r border-[#333333]">
                       <span className="text-sm sm:text-base font-medium text-white">
@@ -311,19 +293,162 @@ const Leaderboard = () => {
                     </td>
                     <td className="px-4 sm:px-8 py-4 sm:py-6">
                       <span className="text-sm sm:text-base font-medium text-white">
-                        {token.lpPairAddress
-                          ? `$${token.marketCap.toLocaleString(undefined, {
-                              maximumFractionDigits: 2,
-                            })}`
-                          : "-"}
+                        {token.heartAmount ? Number(token.heartAmount).toFixed(4) : '0'} ETH
                       </span>
                     </td>
                   </tr>
                 ))}
-            </tbody>
-          </table>
-        </div>
-      </Card>
+              </tbody>
+            </table>
+          </div>
+        </Card>
+      )}
+
+      {/* Unleashed Tokens Table */}
+      {activeTab === "trending" && (
+        <Card className="overflow-hidden border border-white/50">
+          <div className="w-full overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="bg-black">
+                  <th className="group px-4 sm:px-8 py-5 text-left border-r border-[#333333]">
+                    <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-wider">
+                      Token Name/Symbol
+                    </div>
+                  </th>
+                  <th className="group px-4 sm:px-8 py-5 text-left border-r border-[#333333]">
+                    <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-wider">
+                      Market Cap
+                    </div>
+                  </th>
+                  <th className="group px-4 sm:px-8 py-5 text-left">
+                    <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-wider">
+                      LP Pool
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-black divide-y divide-[#333333]">
+                {leaderboardData
+                  ?.filter(token => token.lpPairAddress)
+                  .slice(0, 10)
+                  .map((token: any, index: number) => (
+                    <tr key={index} className="hover:bg-slate-700/50 transition-colors">
+                      <td className="px-4 sm:px-8 py-4 sm:py-6 border-r border-[#333333]">
+                        <a
+                          href={`${token.chain === "base" ? "https://basescan.org/token/" : "https://celoscan.io/token/"}${token.id}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm sm:text-base font-medium text-white hover:text-blue-400 transition-colors"
+                        >
+                          {token.name} ({token.symbol})
+                        </a>
+                      </td>
+                      <td className="px-4 sm:px-8 py-4 sm:py-6 border-r border-[#333333]">
+                        <span className="text-sm sm:text-base font-medium text-white">
+                          {token.marketCap ? `${Number(token.marketCap).toFixed(2)} ETH` : 'N/A'}
+                        </span>
+                      </td>
+                      <td className="px-4 sm:px-8 py-4 sm:py-6">
+                        <a
+                          href={`https://dexscreener.com/${token.chain}/${token.lpPairAddress}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm sm:text-base font-medium text-blue-400 hover:text-blue-300 transition-colors"
+                        >
+                          View Pool
+                        </a>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
+        </Card>
+      )}
+
+      {/* Keep the existing Top Tokens table logic for activeTab === "top" */}
+      {activeTab === "top" && (
+        <Card className="overflow-hidden border border-white/50">
+          <div className="w-full overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="bg-black">
+                  <th className="group px-4 sm:px-8 py-5 text-left border-r border-[#333333]">
+                    <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-wider">
+                      Token Name/Symbol
+                    </div>
+                  </th>
+                  <th className="group px-4 sm:px-8 py-5 text-left border-r border-[#333333]">
+                    <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-wider">
+                      Total Hearts
+                    </div>
+                  </th>
+                  <th className="group px-4 sm:px-8 py-5 text-left border-r border-[#333333]">
+                    <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-wider">
+                      Total ETH Hearted
+                    </div>
+                  </th>
+                  <th className="group px-4 sm:px-8 py-5 text-left">
+                    <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-wider">
+                      LP Pool
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="bg-black divide-y divide-[#333333]">
+                {leaderboardData
+                  ?.slice(0, 10)
+                  .map((token: any, index: number) => (
+                    <tr
+                      key={index}
+                      className="hover:bg-slate-700/50 transition-colors"
+                    >
+                      <td className="px-4 sm:px-8 py-4 sm:py-6 border-r border-[#333333]">
+                        <a
+                          href={`${
+                            token.chain === "base"
+                              ? "https://basescan.org/token/"
+                              : "https://celoscan.io/token/"
+                          }${token.id}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm sm:text-base font-medium text-white hover:text-blue-400 transition-colors"
+                        >
+                          {token.name} ({token.symbol})
+                        </a>
+                      </td>
+                      <td className="px-4 sm:px-8 py-4 sm:py-6 border-r border-[#333333]">
+                        <span className="text-sm sm:text-base font-medium text-white">
+                          {token.heartCount}
+                        </span>
+                      </td>
+                      <td className="px-4 sm:px-8 py-4 sm:py-6 border-r border-[#333333]">
+                        <span className="text-sm sm:text-base font-medium text-white">
+                          {token.heartAmount ? Number(token.heartAmount).toFixed(4) : '0'} ETH
+                        </span>
+                      </td>
+                      <td className="px-4 sm:px-8 py-4 sm:py-6">
+                        {token.lpPairAddress ? (
+                          <a
+                            href={`https://dexscreener.com/${token.chain}/${token.lpPairAddress}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm sm:text-base font-medium text-blue-400 hover:text-blue-300 transition-colors"
+                          >
+                            View Pool
+                          </a>
+                        ) : (
+                          <span className="text-sm sm:text-base font-medium text-gray-500">Not unleashed yet</span>
+                        )}
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
+        </Card>
+      )}
     </div>
   );
 };
