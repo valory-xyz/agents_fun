@@ -43,13 +43,11 @@ export async function GET(request: Request) {
               isUnleashed
               timestamp
               blockNumber
+               heartAmount {
+        id
+        amount
+      }
               hearts {
-                items {
-                  id
-                  timestamp
-                }
-              }
-              recentHearts: hearts(where: { timestamp_gt: ${oneDayAgo} }) {
                 items {
                   id
                   timestamp
@@ -71,6 +69,7 @@ export async function GET(request: Request) {
     });
 
     const leaderboardData = response?.data?.data?.memeTokens?.items;
+    console.log(leaderboardData);
 
     if (!Array.isArray(leaderboardData) || leaderboardData.length === 0) {
       return NextResponse.json([]);
@@ -87,7 +86,9 @@ export async function GET(request: Request) {
           ...token,
           ...tokenData,
           heartCount: token.hearts?.items?.length ?? 0,
-          recentHeartCount: token.recentHearts?.items?.length ?? 0,
+          heartAmount: token.heartAmount?.amount
+            ? Number(token.heartAmount.amount) / 1e18
+            : 0,
         };
       })
     );
@@ -101,8 +102,8 @@ export async function GET(request: Request) {
     } else if (view === "summoned") {
       enrichedData.sort((a, b) => {
         return sortOrder === "desc"
-          ? b.recentHeartCount - a.recentHeartCount
-          : a.recentHeartCount - b.recentHeartCount;
+          ? b.heartCount - a.heartCount
+          : a.heartCount - b.heartCount;
       });
     }
 
