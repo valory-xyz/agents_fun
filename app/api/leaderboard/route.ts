@@ -69,7 +69,6 @@ export async function GET(request: Request) {
     });
 
     const leaderboardData = response?.data?.data?.memeTokens?.items;
-    console.log(leaderboardData);
 
     if (!Array.isArray(leaderboardData) || leaderboardData.length === 0) {
       return NextResponse.json([]);
