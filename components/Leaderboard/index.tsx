@@ -267,12 +267,13 @@ const Leaderboard = () => {
                 </th>
                 <th className="group px-4 sm:px-8 py-5 text-left border-r border-[#333333]">
                   <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-wider">
-                    Hearts in the past 24h
-                  </div>
-                </th>
-                <th className="group px-4 sm:px-8 py-5 text-left border-r border-[#333333]">
-                  <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-wider">
-                    Total Hearts
+                    Total&nbsp;
+                    {selectedChain === "all"
+                      ? "ETH/CELO"
+                      : selectedChain === "base"
+                      ? "ETH"
+                      : "CELO"}
+                    &nbsp; Contributed
                   </div>
                 </th>
                 <th className="group px-4 sm:px-8 py-5 text-left">
@@ -320,12 +321,9 @@ const Leaderboard = () => {
                     </td>
                     <td className="px-4 sm:px-8 py-4 sm:py-6 border-r border-[#333333]">
                       <span className="text-sm sm:text-base font-medium text-white">
-                        {token.recentHeartCount}
-                      </span>
-                    </td>
-                    <td className="px-4 sm:px-8 py-4 sm:py-6 border-r border-[#333333]">
-                      <span className="text-sm sm:text-base font-medium text-white">
-                        {token.heartCount}
+                        {token.heartAmount.toLocaleString(undefined, {
+                          maximumFractionDigits: 2,
+                        })}
                       </span>
                     </td>
                     <td className="px-4 sm:px-8 py-4 sm:py-6">
