@@ -14,7 +14,6 @@ export async function GET(request: Request) {
     const view = searchParams.get("view") ?? "trending";
 
     const currentTimestamp = Math.floor(Date.now() / 1000);
-    const oneDayAgo = currentTimestamp - 24 * 60 * 60;
 
     const unleashCondition =
       view === "top"
@@ -43,15 +42,10 @@ export async function GET(request: Request) {
               isUnleashed
               timestamp
               blockNumber
-               heartAmount {
-        id
-        amount
-      }
-              hearts {
-                items {
-                  id
-                  timestamp
-                }
+              heartCount
+              heartAmount {
+                id
+                amount
               }
             }
           }
@@ -84,7 +78,7 @@ export async function GET(request: Request) {
         return {
           ...token,
           ...tokenData,
-          heartCount: token.hearts?.items?.length ?? 0,
+          heartCount: token.heartCount ?? 0,
           heartAmount: token.heartAmount?.amount
             ? Number(token.heartAmount.amount) / 1e18
             : 0,

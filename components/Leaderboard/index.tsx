@@ -267,6 +267,11 @@ const Leaderboard = () => {
                 </th>
                 <th className="group px-4 sm:px-8 py-5 text-left border-r border-[#333333]">
                   <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-wider">
+                    Total Hearts
+                  </div>
+                </th>
+                <th className="group px-4 sm:px-8 py-5 text-left border-r border-[#333333]">
+                  <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-wider">
                     Total&nbsp;
                     {selectedChain === "all"
                       ? "ETH/CELO"
@@ -318,6 +323,11 @@ const Leaderboard = () => {
                       >
                         {`${token.id.slice(0, 6)}...${token.id.slice(-4)}`}
                       </a>
+                    </td>
+                    <td className="px-4 sm:px-8 py-4 sm:py-6 border-r border-[#333333]">
+                      <span className="text-sm sm:text-base font-medium text-white">
+                        {token.heartCount}
+                      </span>
                     </td>
                     <td className="px-4 sm:px-8 py-4 sm:py-6 border-r border-[#333333]">
                       <span className="text-sm sm:text-base font-medium text-white">
