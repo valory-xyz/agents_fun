@@ -272,13 +272,13 @@ const Leaderboard = () => {
                 </th>
                 <th className="group px-4 sm:px-8 py-5 text-left border-r border-[#333333]">
                   <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-gray-300 uppercase tracking-wider">
-                    Total{" "}
+                    Total&nbsp;
                     {selectedChain === "all"
                       ? "ETH/CELO"
                       : selectedChain === "base"
                       ? "ETH"
-                      : "CELO"}{" "}
-                    Contributed
+                      : "CELO"}
+                    &nbsp; Contributed
                   </div>
                 </th>
                 <th className="group px-4 sm:px-8 py-5 text-left">
