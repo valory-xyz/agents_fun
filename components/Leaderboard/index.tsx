@@ -220,7 +220,7 @@ const Leaderboard = () => {
             >
               Unleashed Tokens 🚀
             </button>
-            <button
+            {/* <button
               onClick={() => setActiveTab("top")}
               className={`px-4 py-2 text-2xl font-bold transition-colors ${
                 activeTab === "top"
@@ -229,7 +229,7 @@ const Leaderboard = () => {
               }`}
             >
               Top Tokens ⭐
-            </button>
+            </button> */}
           </div>
         </Card>
 
