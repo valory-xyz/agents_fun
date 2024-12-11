@@ -156,7 +156,7 @@ const Leaderboard = () => {
                 <ul className="list-disc pl-6 text-blue-400">
                   <li>
                     <a
-                      href="https://basescan.org/address/0x42156841253f428cb644ea1230d4fddfb70f8891#code"
+                      href="https://basescan.org/address/0x82a9c823332518c32a0c0edc050ef00934cf04d4#code"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-blue-300"
@@ -166,7 +166,7 @@ const Leaderboard = () => {
                   </li>
                   <li>
                     <a
-                      href="https://celoscan.io/address/0x42156841253f428cb644ea1230d4fddfb70f8891#code"
+                      href="https://celoscan.io/address/0xeea5f1e202dc43607273d54101ff8b58fb008a99#code"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:text-blue-300"
