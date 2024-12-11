@@ -56,11 +56,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
       >
-        <div className="mb-8 p-4 bg-red-900/80 border-2 border-red-500 rounded-none text-white">
-          <p className="text-sm md:text-base">
-            DISCLAIMER: AGENTS.FUN IS AN EXPERIMENTAL PRODUCT CREATED ON OLAS. THIS IS A COMMUNITY CREATED SITE BUILT FOR INFORMATIONAL PURPOSES ONLY. DO YOUR OWN RESEARCH AND USE AT YOUR OWN RISK." -> "DISCLAIMER: AGENTS.FUN IS AN EXPERIMENTAL PRODUCT CREATED ON OLAS. CONTRACTS ARE UNAUDITED. THIS IS A COMMUNITY CREATED SITE BUILT FOR INFORMATIONAL PURPOSES ONLY. DO YOUR OWN RESEARCH AND USE AT YOUR OWN RISK.
-          </p>
-        </div>
         <div className="fixed inset-0 z-0 grid grid-cols-8 gap-8 p-8 opacity-30 select-none pointer-events-none">
           <EmojiGrid />
         </div>
