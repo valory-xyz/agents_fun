@@ -56,20 +56,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
       >
-        <div className="mb-8 p-4 bg-red-900/80 border-2 border-red-500 rounded-none text-white">
-          <h3 className="text-xl font-bold mb-2 text-center">
-            ⚠️ High Risk Warning - DO NOT USE!
-          </h3>
-          <p className="text-sm md:text-base">
-            The Unleash feature for meme tokens with large ETH commitments has
-            critical vulnerabilities.&nbsp;
-            <strong className="font-bold">
-              We strongly advise against using this feature
-            </strong>
-            &nbsp;as it may result in permanent loss of funds. The contracts are
-            unaudited and potentially dangerous.
-          </p>
-        </div>
         <div className="fixed inset-0 z-0 grid grid-cols-8 gap-8 p-8 opacity-30 select-none pointer-events-none">
           <EmojiGrid />
         </div>
