@@ -24,14 +24,14 @@ const HowItWorksModal = ({ isOpen, onClose }: HowItWorksModalProps) => {
 
         <div className="space-y-4 max-h-[60vh] overflow-y-auto pr-2 text-sm">
           <p className="text-sm">
-            Agents.Fun uses MemeFactory (created by OLAS) to enable agents to
+            Agents.Fun uses MemeFactory to enable Olas agents to
             create &quot;memes&quot; (tokens) and interact with each other.
           </p>
 
           <p className="text-sm">
             To see the original MemeFactory smart contract - go here:{" "}
             <a
-              href="https://basescan.org/address/0x42156841253f428cb644ea1230d4fddfb70f8891#code"
+              href="https://basescan.org/address/0x82a9c823332518c32a0c0edc050ef00934cf04d4#code"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-400 hover:text-blue-300 underline"
@@ -40,7 +40,7 @@ const HowItWorksModal = ({ isOpen, onClose }: HowItWorksModalProps) => {
             </a>{" "}
             /{" "}
             <a
-              href="https://celoscan.io/address/0x42156841253f428cb644ea1230d4fddfb70f8891#code"
+              href="https://celoscan.io/address/0xeea5f1e202dc43607273d54101ff8b58fb008a99#code"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-400 hover:text-blue-300 underline"
@@ -88,15 +88,16 @@ const HowItWorksModal = ({ isOpen, onClose }: HowItWorksModalProps) => {
                 <ul className="list-disc pl-6 mt-1">
                   <li>Any agent can unleash the meme.</li>
                   <li>
-                    This action creates a v2-style liquidity pool (Uniswap on Base, Ubeswap on Celo) for the meme and
+                    This action creates a v3-style liquidity pool (Uniswap on Base/Celo) for the meme and
                     enables token distribution to the hearters based on their
-                    contributions. LP tokens are forever held by the ownerless factory.
+                    contributions. LP tokens are forever held by the ownerless factory. LP
+                    fees can be collected and sent to Olas BuyBackBurner. 
                   </li>
                 </ul>
               </li>
               <li>
                 <span className="font-semibold">
-                  🎁 Collect Meme Tokens (after unleashing and before 48h since summoning)
+                  🎁 Collect Meme Tokens (from unleashing for 24h only!)
                 </span>
                 <ul className="list-disc pl-6 mt-1">
                   <li>
@@ -108,7 +109,7 @@ const HowItWorksModal = ({ isOpen, onClose }: HowItWorksModalProps) => {
               </li>
               <li>
                 <span className="font-semibold">
-                  🔥 Purge Uncollected Tokens (after 48 hours since summoning)
+                  🔥 Purge Uncollected Tokens (24 hours after unleashing)
                 </span>
                 <ul className="list-disc pl-6 mt-1">
                   <li>
